@@ -84,7 +84,7 @@ const HeroSection = ({
   title: string;
   subtitle: string;
 }) => (
-  <section className="relative w-full h-[60vh] sm:h-[70vh] lg:h-screen overflow-hidden">
+  <section className="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
     <Image
       src={pic5.src}
       alt="Students at Rabbit School learning and growing together"
@@ -94,23 +94,23 @@ const HeroSection = ({
       sizes="100vw"
       quality={85}
     />
-    <div className="absolute inset-0 bg-gradient-to-b from-[#623D3C]/70 via-[#623D3C]/50 to-[#623D3C]/70" />
+    <div className="absolute inset-0 bg-[#623d3c4c]" />
 
     <motion.div
-      className="absolute inset-0 flex flex-col justify-center px-4 md:px-12 lg:px-20 max-w-4xl"
+      className="absolute inset-0 flex flex-col justify-center px-4 md:px-12 lg:px-20 max-w-4xl "
       initial="hidden"
       animate="visible"
       variants={fadeInVariants}
     >
       <motion.h1
-        className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4"
+        className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 mt-96"
         variants={slideInVariants}
       >
         {title}
       </motion.h1>
 
       <motion.h2
-        className="text-[#FFD45F] text-xl sm:text-3xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg leading-snug"
+        className="text-[#FFD45F] text-xl sm:text-base md:text-3xl lg:text-4xl font-bold drop-shadow-lg leading-snug"
         variants={slideInVariants}
         transition={{ delay: 0.2 }}
       >
@@ -136,7 +136,7 @@ const StorySection = ({
   bg?: string;
   index: number;
 }) => (
-  <section className={`${bg} py-12 md:py-16`}>
+  <section className={` py-12 md:py-16`}>
     <div className="max-w-7xl mx-auto px-4 md:px-8">
       <motion.div
         className={`flex flex-col ${
@@ -168,7 +168,7 @@ const StorySection = ({
           transition={{ delay: 0.4 }}
         >
           <motion.div
-            className="relative overflow-hidden rounded-2xl shadow-xl"
+            className="relative overflow-hidden rounded-2xl "
             whileHover={{ scale: 1.02, y: -5 }}
             transition={{ type: "spring", stiffness: 200, damping: 10 }}
           >
@@ -190,15 +190,15 @@ const StorySection = ({
 
 const BannerSection = ({ title, text }: { title: string; text: string }) => (
   <section className="relative w-full h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
-    <Image
+    {/* <Image
       src="/images/ss.jpg"
       alt="Students smiling and learning together at Rabbit School"
       fill
       className="object-cover"
       sizes="100vw"
       quality={85}
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-[#623D3C]/70 via-[#623D3C]/50 to-[#623D3C]/70" />
+    /> */}
+    <div className="absolute inset-0 bg-[#8BAEA7]" />
 
     <motion.div
       className="relative z-10 text-center text-white px-4 md:px-12 max-w-4xl"
@@ -450,20 +450,20 @@ const Page = () => {
       {
         titleKey: "ourStoryPage.section1.title",
         textKey: "ourStoryPage.section1.text",
-        imageSrc: "/images/general-5.png",
+        imageSrc: "/images/New Pictures P6.jpg",
         imageAlt: "Vocational training program at Rabbit School",
         reverse: true,
       },
       {
         titleKey: "ourStoryPage.section2.title",
         textKey: "ourStoryPage.section2.text",
-        imageSrc: "/images/general-4.png",
+        imageSrc: "/images/New Pictures P7.jpg",
         imageAlt: "Inclusive education classroom in Cambodia",
       },
       {
         titleKey: "ourStoryPage.section3.title",
         textKey: "ourStoryPage.section3.text",
-        imageSrc: "/images/general-3.png",
+        imageSrc: "/images/New Pictures P8.jpg",
         imageAlt: "Community support and engagement program",
         reverse: true,
         bg: "bg-[#8BAEA7]/20",
@@ -471,7 +471,7 @@ const Page = () => {
       {
         titleKey: "ourStoryPage.section4.title",
         textKey: "ourStoryPage.section4.text",
-        imageSrc: "/images/general-2.png",
+        imageSrc: "/images/New Picture 9.jpg",
         imageAlt: "Student engagement and learning activities",
       },
     ],
@@ -503,13 +503,13 @@ const Page = () => {
         text={t("ourStoryPage.banner.text")}
       />
 
-      <GallerySection title={t("ourStoryPage.pictures.title")} />
+      {/* <GallerySection title={t("ourStoryPage.pictures.title")} />
 
       <SDGSection
         title={t("ourStoryPage.sdg.title")}
         text={t("ourStoryPage.sdg.text")}
         buttonText={t("donation.button")}
-      />
+      /> */}
     </main>
   );
 };
