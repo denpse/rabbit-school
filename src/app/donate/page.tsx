@@ -13,12 +13,12 @@ const DonatePage = () => {
   return (
     <div className="font-sans">
       {/* Top Banner */}
-      <section className="relative w-full h-64 flex items-center justify-center bg-blue-100">
+      <section className="relative w-full h-64 sm:h-[600px] flex items-center justify-center ">
         <Image
-          src="/images/donate.png"
+          src="/images/New Pictures P14.jpg"
           alt="Children receiving support"
           fill
-          className="object-cover opacity-70"
+          className="object-cover"
           priority
         />
       </section>

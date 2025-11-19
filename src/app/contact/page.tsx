@@ -5,7 +5,15 @@ import Image from "next/image";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
 
 // Types
 interface FormData {
@@ -35,53 +43,51 @@ const CONTACT_INFO: ContactInfo[] = [
     icon: Mail,
     labelKey: "contactSection.section1.emailLabel",
     valueKey: "contactSection.section1.email",
-    href: "mailto:sor.sothearorn@rabbitschoolcambodia.net"
+    href: "mailto:sor.sothearorn@rabbitschoolcambodia.net",
   },
   {
     icon: MapPin,
     labelKey: "contactSection.section1.addressLabel",
     valueKey: "contactSection.section1.address",
     href: "https://goo.gl/maps/jvMBC2MgTz1kUyoh6",
-    external: true
+    external: true,
   },
   {
     icon: Phone,
     labelKey: "contactSection.section1.telephoneLabel",
     valueKey: "contactSection.section1.telephone",
-    href: "tel:+85568901971"
-  }
+    href: "tel:+85568901971",
+  },
 ] as const;
 
 // Optimized animation variants
 const fadeInLeft = {
   hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
 
 const fadeInRight = {
   hidden: { opacity: 0, x: 30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
+    transition: { staggerChildren: 0.15 },
+  },
 };
 
 // Components
 const FormField: React.FC<FormFieldProps> = ({ label, error, children }) => (
   <div className="space-y-2">
-    <label className="block text-sm font-medium text-[#623D3C]">
-      {label}
-    </label>
+    <label className="block text-sm font-medium text-[#623D3C]">{label}</label>
     {children}
     {error && (
       <div className="flex items-center gap-2 text-red-600 text-sm">
@@ -117,7 +123,7 @@ const ContactInfoItem: React.FC<{
               className="text-[#623D3C] hover:text-[#623D3C]/80 transition-colors duration-200 focus:outline-none focus:underline"
               {...(info.external && {
                 target: "_blank",
-                rel: "noopener noreferrer"
+                rel: "noopener noreferrer",
               })}
             >
               {t(info.valueKey)}
@@ -133,7 +139,9 @@ const ContactInfoItem: React.FC<{
 
 const ContactSection: React.FC = () => {
   const t = useTranslations();
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const {
     register,
@@ -141,71 +149,77 @@ const ContactSection: React.FC = () => {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>({
-    mode: 'onChange' // Real-time validation
+    mode: "onChange", // Real-time validation
   });
 
   // Memoized form validation rules
-  const validationRules = useMemo(() => ({
-    name: {
-      required: t("contactSection.section2.nameError"),
-      minLength: {
-        value: 2,
-        message: t("contactSection.section2.nameMinLength")
-      }
-    },
-    email: {
-      required: t("contactSection.section2.emailErrorRequired"),
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: t("contactSection.section2.emailErrorPattern")
-      }
-    },
-    message: {
-      required: t("contactSection.section2.messageError"),
-      minLength: {
-        value: 10,
-        message: t("contactSection.section2.messageMinLength")
-      }
-    }
-  }), [t]);
-
-  const onSubmit: SubmitHandler<FormData> = useCallback(async (data) => {
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+  const validationRules = useMemo(
+    () => ({
+      name: {
+        required: t("contactSection.section2.nameError"),
+        minLength: {
+          value: 2,
+          message: t("contactSection.section2.nameMinLength"),
         },
-        body: JSON.stringify({
-          ...data,
-          timestamp: new Date().toISOString()
-        }),
-      });
+      },
+      email: {
+        required: t("contactSection.section2.emailErrorRequired"),
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: t("contactSection.section2.emailErrorPattern"),
+        },
+      },
+      message: {
+        required: t("contactSection.section2.messageError"),
+        minLength: {
+          value: 10,
+          message: t("contactSection.section2.messageMinLength"),
+        },
+      },
+    }),
+    [t]
+  );
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  const onSubmit: SubmitHandler<FormData> = useCallback(
+    async (data) => {
+      setSubmitStatus("idle");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+            timestamp: new Date().toISOString(),
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.success) {
+          setSubmitStatus("success");
+          reset();
+          // Clear success message after 5 seconds
+          setTimeout(() => setSubmitStatus("idle"), 5000);
+        } else {
+          throw new Error(result.message || "Submission failed");
+        }
+      } catch (error) {
+        console.error("Contact form error:", error);
+        setSubmitStatus("error");
+        // Clear error message after 5 seconds
+        setTimeout(() => setSubmitStatus("idle"), 5000);
       }
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitStatus('success');
-        reset();
-        // Clear success message after 5 seconds
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        throw new Error(result.message || 'Submission failed');
-      }
-    } catch (error) {
-      console.error('Contact form error:', error);
-      setSubmitStatus('error');
-      // Clear error message after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    }
-  }, [reset]);
+    },
+    [reset]
+  );
 
   return (
     <main className="bg-[#F7F5F4]">
@@ -283,12 +297,12 @@ const ContactSection: React.FC = () => {
               variants={fadeInRight}
               className="relative"
             >
-              <div className="aspect-[4/3] bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+              <div className="aspect-[4/3] bg-gray-200 rounded-xl overflow-hidden ">
                 <Image
-                  src="/picture/Links/contact.png"
+                  src="/images/New Picture P15.jpg"
                   alt="Rabbit School location and facilities"
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  className="object-cover hover:scale-105 transition-transform duration-300 rounded-md"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={85}
                 />
@@ -328,7 +342,7 @@ const ContactSection: React.FC = () => {
               </div>
 
               {/* Status Messages */}
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -341,7 +355,7 @@ const ContactSection: React.FC = () => {
                 </motion.div>
               )}
 
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -365,7 +379,7 @@ const ContactSection: React.FC = () => {
                       {...register("name", validationRules.name)}
                       className="w-full px-4 py-3 border border-[#623D3C]/20 rounded-lg focus:ring-2 focus:ring-[#623D3C] focus:border-[#623D3C] transition-colors duration-200 bg-white"
                       placeholder={t("contactSection.section2.namePlaceholder")}
-                      aria-invalid={errors.name ? 'true' : 'false'}
+                      aria-invalid={errors.name ? "true" : "false"}
                     />
                   </FormField>
 
@@ -377,20 +391,22 @@ const ContactSection: React.FC = () => {
                       type="email"
                       {...register("email", validationRules.email)}
                       className="w-full px-4 py-3 border border-[#623D3C]/20 rounded-lg focus:ring-2 focus:ring-[#623D3C] focus:border-[#623D3C] transition-colors duration-200 bg-white"
-                      placeholder={t("contactSection.section2.emailPlaceholder")}
-                      aria-invalid={errors.email ? 'true' : 'false'}
+                      placeholder={t(
+                        "contactSection.section2.emailPlaceholder"
+                      )}
+                      aria-invalid={errors.email ? "true" : "false"}
                     />
                   </FormField>
                 </div>
 
-                <FormField
-                  label={t("contactSection.section2.subjectLabel")}
-                >
+                <FormField label={t("contactSection.section2.subjectLabel")}>
                   <input
                     type="text"
                     {...register("subject")}
                     className="w-full px-4 py-3 border border-[#623D3C]/20 rounded-lg focus:ring-2 focus:ring-[#623D3C] focus:border-[#623D3C] transition-colors duration-200 bg-white"
-                    placeholder={t("contactSection.section2.subjectPlaceholder")}
+                    placeholder={t(
+                      "contactSection.section2.subjectPlaceholder"
+                    )}
                   />
                 </FormField>
 
@@ -402,8 +418,10 @@ const ContactSection: React.FC = () => {
                     rows={5}
                     {...register("message", validationRules.message)}
                     className="w-full px-4 py-3 border border-[#623D3C]/20 rounded-lg focus:ring-2 focus:ring-[#623D3C] focus:border-[#623D3C] transition-colors duration-200 bg-white resize-vertical"
-                    placeholder={t("contactSection.section2.messagePlaceholder")}
-                    aria-invalid={errors.message ? 'true' : 'false'}
+                    placeholder={t(
+                      "contactSection.section2.messagePlaceholder"
+                    )}
+                    aria-invalid={errors.message ? "true" : "false"}
                   />
                 </FormField>
 

@@ -48,8 +48,8 @@ const fadeInVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6
-    }
+      duration: 0.6,
+    },
   },
 };
 
@@ -59,8 +59,8 @@ const slideInLeft = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.6
-    }
+      duration: 0.6,
+    },
   },
 };
 
@@ -70,8 +70,8 @@ const slideInRight = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.6
-    }
+      duration: 0.6,
+    },
   },
 };
 
@@ -84,38 +84,47 @@ const staggerContainer = {
     },
   },
 };
-
+// Animation variants
+const slideInVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+};
 // Components
-const HeroSection = ({ title, subtitle }: { title: string; subtitle: string }) => (
-  <section className="relative w-full h-[70vh] md:h-screen overflow-hidden">
+const HeroSection = ({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) => (
+  <section className="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
     <Image
-      src="/images/ss.jpg"
-      alt="Students learning together at The Rabbit School"
+      src="/images/New Pictures P10.jpg"
+      alt="Students at Rabbit School learning and growing together"
       fill
       priority
       className="object-cover"
       sizes="100vw"
       quality={85}
     />
-
-    <div className="absolute inset-0 bg-gradient-to-b from-[#623D3C]/70 via-[#623D3C]/50 to-[#623D3C]/70" />
+    <div className="absolute inset-0 bg-[#623d3c4c]" />
 
     <motion.div
-      className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8 max-w-6xl mx-auto"
+      className="absolute inset-0 flex flex-col justify-center px-4 md:px-12 lg:px-20 max-w-4xl "
       initial="hidden"
       animate="visible"
       variants={fadeInVariants}
     >
       <motion.h1
-        className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold drop-shadow-lg mb-6 leading-tight"
-        variants={slideInLeft}
+        className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 mt-96"
+        variants={slideInVariants}
       >
         {title}
       </motion.h1>
 
       <motion.p
-        className="text-base sm:text-lg md:text-2xl drop-shadow-md max-w-4xl leading-relaxed"
-        variants={fadeInVariants}
+        className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl text-white font-bold"
+        variants={slideInVariants}
         transition={{ delay: 0.2 }}
       >
         {subtitle}
@@ -124,8 +133,18 @@ const HeroSection = ({ title, subtitle }: { title: string; subtitle: string }) =
   </section>
 );
 
-const NavigationSection = ({ title, buttons }: { title: string; buttons: NavigationButton[] }) => (
-  <section className="bg-white py-12 shadow-lg" role="navigation" aria-label="Program sections">
+const NavigationSection = ({
+  title,
+  buttons,
+}: {
+  title: string;
+  buttons: NavigationButton[];
+}) => (
+  <section
+    className="bg-white py-12 shadow-lg"
+    role="navigation"
+    aria-label="Program sections"
+  >
     <div className="max-w-7xl mx-auto px-4">
       <motion.div
         initial="hidden"
@@ -184,7 +203,9 @@ const ProgramSection = ({
   <section id={id} className="py-16 scroll-mt-20">
     <div className="max-w-7xl mx-auto px-4 md:px-8">
       <motion.div
-        className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center mb-16`}
+        className={`flex flex-col ${
+          reverse ? "lg:flex-row-reverse" : "lg:flex-row"
+        } gap-12 items-center mb-16`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -261,7 +282,7 @@ const VideoPlayer = ({
           <motion.div
             className="relative cursor-pointer group"
             onClick={handlePlay}
-            onKeyDown={(e) => e.key === 'Enter' && handlePlay()}
+            onKeyDown={(e) => e.key === "Enter" && handlePlay()}
             tabIndex={0}
             role="button"
             aria-label="Play video demonstration"
@@ -282,7 +303,10 @@ const VideoPlayer = ({
                 className="bg-white/90 rounded-full p-6 shadow-lg group-hover:bg-white transition-colors"
                 whileHover={{ scale: 1.1 }}
               >
-                <Play className="w-8 h-8 text-[#623D3C] ml-1" fill="currentColor" />
+                <Play
+                  className="w-8 h-8 text-[#623D3C] ml-1"
+                  fill="currentColor"
+                />
               </motion.div>
             </div>
           </motion.div>
@@ -332,7 +356,13 @@ const QuoteSection = ({ quote }: { quote: string }) => (
   </motion.section>
 );
 
-const ActivityGallery = ({ title, images }: { title: string; images: ActivityImage[] }) => (
+const ActivityGallery = ({
+  title,
+  images,
+}: {
+  title: string;
+  images: ActivityImage[];
+}) => (
   <section className="py-16 bg-[#F7F5F4]" aria-labelledby="gallery-title">
     <div className="max-w-7xl mx-auto px-4">
       <motion.h2
@@ -353,7 +383,11 @@ const ActivityGallery = ({ title, images }: { title: string; images: ActivityIma
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerContainer}
       >
-        <div className="flex gap-6 min-w-max" role="list" aria-label="Activity images">
+        <div
+          className="flex gap-6 min-w-max"
+          role="list"
+          aria-label="Activity images"
+        >
           {images.map((image, index) => (
             <motion.div
               key={`activity-${index}`}
@@ -383,11 +417,11 @@ const ActivityGallery = ({ title, images }: { title: string; images: ActivityIma
 const AdvocacyCards = ({
   title,
   description,
-  cards
+  cards,
 }: {
   title: string;
   description: string;
-  cards: Array<{ src: string; alt: string; caption: string }>
+  cards: Array<{ src: string; alt: string; caption: string }>;
 }) => (
   <section id="advocacy" className="py-16 bg-white scroll-mt-20">
     <div className="max-w-7xl mx-auto px-4">
@@ -445,26 +479,47 @@ const HowWeWorkPage = () => {
   const t = useTranslations();
 
   // Memoized navigation buttons
-  const navigationButtons: NavigationButton[] = useMemo(() => [
-    { label: t("weWorkPage.nav.education") || "Education Programs", id: "education-programs" },
-    { label: t("weWorkPage.nav.vocational") || "Vocational Training & Job Placement", id: "vocational-training" },
-    { label: t("weWorkPage.nav.teacher") || "Teacher Training", id: "teacher-training" },
-    { label: t("weWorkPage.nav.advocacy") || "Advocacy And Community Building", id: "advocacy" },
-  ], [t]);
+  const navigationButtons: NavigationButton[] = useMemo(
+    () => [
+      {
+        label: t("weWorkPage.nav.education") || "Education Programs",
+        id: "education-programs",
+      },
+      {
+        label:
+          t("weWorkPage.nav.vocational") ||
+          "Vocational Training & Job Placement",
+        id: "vocational-training",
+      },
+      {
+        label: t("weWorkPage.nav.teacher") || "Teacher Training",
+        id: "teacher-training",
+      },
+      {
+        label:
+          t("weWorkPage.nav.advocacy") || "Advocacy And Community Building",
+        id: "advocacy",
+      },
+    ],
+    [t]
+  );
 
   // Memoized advocacy cards data
-  const advocacyCards = useMemo(() => [
-    {
-      src: "/images/sai.jpg",
-      alt: "Community event - Run with Sai",
-      caption: t("weWorkPage.sai-event.caption1")
-    },
-    {
-      src: "/images/mother.webp",
-      alt: "Parent training and support sessions",
-      caption: t("weWorkPage.sai-event.caption2")
-    }
-  ], [t]);
+  const advocacyCards = useMemo(
+    () => [
+      {
+        src: "/images/sai.jpg",
+        alt: "Community event - Run with Sai",
+        caption: t("weWorkPage.sai-event.caption1"),
+      },
+      {
+        src: "/images/mother.webp",
+        alt: "Parent training and support sessions",
+        caption: t("weWorkPage.sai-event.caption2"),
+      },
+    ],
+    [t]
+  );
 
   return (
     <main className="bg-[#F7F5F4]">
@@ -495,26 +550,32 @@ const HowWeWorkPage = () => {
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                   {t("weWorkPage.programs.education.section1.title")}
                 </h4>
-                <p className="leading-relaxed">{t("weWorkPage.programs.education.section1.desc")}</p>
+                <p className="leading-relaxed">
+                  {t("weWorkPage.programs.education.section1.desc")}
+                </p>
               </div>
 
               <div>
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                   {t("weWorkPage.programs.education.section2.title")}
                 </h4>
-                <p className="leading-relaxed">{t("weWorkPage.programs.education.section1.desc")}</p>
+                <p className="leading-relaxed">
+                  {t("weWorkPage.programs.education.section1.desc")}
+                </p>
               </div>
 
               <div>
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                   {t("weWorkPage.programs.education.section3.title")}
                 </h4>
-                <p className="leading-relaxed">{t("weWorkPage.programs.education.section3.desc")}</p>
+                <p className="leading-relaxed">
+                  {t("weWorkPage.programs.education.section3.desc")}
+                </p>
               </div>
             </div>
           </div>
         }
-        imageSrc="/images/poor.png"
+        imageSrc="/images/New Pictures P11.jpg"
         imageAlt="Education programs supporting underprivileged children with special needs"
       />
 
@@ -531,11 +592,13 @@ const HowWeWorkPage = () => {
               <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                 {t("weWorkPage.programs.vocational.section1.title")}
               </h4>
-              <p className="leading-relaxed">{t("weWorkPage.programs.vocational.section1.desc")}</p>
+              <p className="leading-relaxed">
+                {t("weWorkPage.programs.vocational.section1.desc")}
+              </p>
             </div>
           </div>
         }
-        imageSrc="/images/make.jpeg"
+        imageSrc="/images/New Pictures P12.jpg"
         imageAlt="Students engaged in hands-on vocational training activities"
         reverse
       />
@@ -565,20 +628,20 @@ const HowWeWorkPage = () => {
             </div>
           </div>
         }
-        imageSrc="/images/vocational-training.png"
+        imageSrc="/images/New Picture 13.jpg"
         imageAlt="Professional development and teacher training sessions"
       >
         {/* Video Player */}
-        <VideoPlayer
+        {/* <VideoPlayer
           thumbnailSrc="/images/paper.png"
           videoSrc="/images/video.mp4"
           title={t("weWorkPage.programs.making-paper-bags.title")}
           description={t("weWorkPage.programs.making-paper-bags.desc")}
-        />
+        /> */}
       </ProgramSection>
 
       {/* Speech Stimulators Section */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             className="space-y-8"
@@ -601,7 +664,7 @@ const HowWeWorkPage = () => {
               transition={{ type: "spring", stiffness: 200 }}
             >
               <Image
-                src="/images/7.jpg"
+                src="/images/New Pictures P11.jpg"
                 alt="Cambodia's First Speech Stimulators team training session"
                 width={1200}
                 height={600}
@@ -618,23 +681,23 @@ const HowWeWorkPage = () => {
             </motion.p>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Quote Section */}
-      <QuoteSection quote={t("weWorkPage.stimulator.quote")} />
+      {/* <QuoteSection quote={t("weWorkPage.stimulator.quote")} /> */}
 
       {/* Advocacy Section */}
-      <AdvocacyCards
+      {/* <AdvocacyCards
         title={t("weWorkPage.sai-event.title")}
         description={t("weWorkPage.sai-event.desc")}
         cards={advocacyCards}
-      />
+      /> */}
 
       {/* Activity Gallery */}
-      <ActivityGallery
+      {/* <ActivityGallery
         title={t("weWorkPage.school-activities.title")}
         images={ACTIVITY_IMAGES}
-      />
+      /> */}
     </main>
   );
 };
