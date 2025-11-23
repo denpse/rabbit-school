@@ -84,7 +84,7 @@ const HeroSection = ({
   title: string;
   subtitle: string;
 }) => (
-  <section className="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+  <section className="relative w-full h-[500px] sm:h-[600px] md:h-[700px]">
     <Image
       src={pic5.src}
       alt="Students at Rabbit School learning and growing together"

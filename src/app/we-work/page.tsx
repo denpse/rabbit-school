@@ -97,7 +97,7 @@ const HeroSection = ({
   title: string;
   subtitle: string;
 }) => (
-  <section className="relative w-full h-[60vh] sm:h-[80vh] overflow-hidden">
+  <section className="relative w-full h-[500px] sm:h-[600px] md:h-[700px]">
     <Image
       src="/images/New Pictures P10.jpg"
       alt="Students at Rabbit School learning and growing together"
@@ -447,7 +447,7 @@ const AdvocacyCards = ({
           {cards.map((card, index) => (
             <motion.article
               key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#623D3C]/10"
+              className="bg-white rounded-2xl overflow-hidden border border-[#623D3C]/10"
               variants={fadeInVariants}
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ type: "spring", stiffness: 200 }}
@@ -461,6 +461,7 @@ const AdvocacyCards = ({
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
+
               <div className="p-6 text-center">
                 <p className="font-semibold text-[#623D3C] text-base md:text-lg">
                   {card.caption}
@@ -513,7 +514,7 @@ const HowWeWorkPage = () => {
         caption: t("weWorkPage.sai-event.caption1"),
       },
       {
-        src: "/images/mother.webp",
+        src: "/images/New Picture 13.jpg",
         alt: "Parent training and support sessions",
         caption: t("weWorkPage.sai-event.caption2"),
       },
@@ -598,7 +599,7 @@ const HowWeWorkPage = () => {
             </div>
           </div>
         }
-        imageSrc="/images/New Pictures P12.jpg"
+        imageSrc="/images/Vocational Training (1).jpg"
         imageAlt="Students engaged in hands-on vocational training activities"
         reverse
       />
@@ -628,7 +629,8 @@ const HowWeWorkPage = () => {
             </div>
           </div>
         }
-        imageSrc="/images/New Picture 13.jpg"
+        // imageSrc="/images/New Picture 13.jpg"
+        imageSrc="/images/New Pictures P12.jpg"
         imageAlt="Professional development and teacher training sessions"
       >
         {/* Video Player */}
@@ -687,11 +689,11 @@ const HowWeWorkPage = () => {
       {/* <QuoteSection quote={t("weWorkPage.stimulator.quote")} /> */}
 
       {/* Advocacy Section */}
-      {/* <AdvocacyCards
+      <AdvocacyCards
         title={t("weWorkPage.sai-event.title")}
         description={t("weWorkPage.sai-event.desc")}
         cards={advocacyCards}
-      /> */}
+      />
 
       {/* Activity Gallery */}
       {/* <ActivityGallery

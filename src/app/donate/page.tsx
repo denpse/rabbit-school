@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import DonationCard from "@/components/DonationCard";
 
 const DonatePage = () => {
   const t = useTranslations();
@@ -60,38 +61,7 @@ const DonatePage = () => {
         </div>
 
         {/* ABA QR Code Section */}
-        <div className="flex justify-center">
-          <div className="bg-white border rounded-lg p-6 flex items-center">
-            {/* QR Code */}
-            <Image
-              src="/images/QR.png"
-              alt="ABA Bank QR Code for donation"
-              width={160}
-              height={160}
-              className="object-contain"
-            />
-
-            {/* Vertical Divider */}
-            <div className="w-px bg-gray-300 mx-6"></div>
-
-            {/* Bank Info */}
-            <div>
-              <h3 className="text-lg font-bold mb-3">
-                {t("donatePage.aba.title")}
-              </h3>
-              <p>
-                <strong>Bank:</strong> {t("donatePage.aba.bank")}
-              </p>
-              <p>
-                <strong>Account name:</strong> {t("donatePage.aba.accountName")}
-              </p>
-              <p>
-                <strong>Account number:</strong>{" "}
-                {t("donatePage.aba.accountNumber")}
-              </p>
-            </div>
-          </div>
-        </div>
+        <DonationCard />
       </section>
     </div>
   );
