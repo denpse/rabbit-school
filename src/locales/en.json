@@ -254,37 +254,53 @@
     "programs": {
       "education": {
         "title": "EDUCATION PROGRAMS",
-        "desc": "Empowering Bright Minds to Embrace Life's Opportunities. At The Rabbit School, we believe education should adapt to the child—not the other way around. We support children and youth with intellectual disabilities from early childhood through adolescence. Specialized classrooms in public schools across Cambodia help students aged 5-16 develop essential motor,self-help, cognitive, and social skills.",
+        "subtitle": "Empowering Bright Minds to Embrace Life's Opportunities",
         "section1": {
-          "title": "Readiness Classes (Ages 4-6)",
-          "desc": "Self-help and independence skills Social and emotional development Preparation for inclusive or integrated classrooms"
+          "title": "Specialized Education",
+          "desc": "At The Rabbit School, we believe that education should adapt to the child—not the other way around. That’s why we’ve developed a flexible education model that supports children and youth with intellectual disabilities from early childhood through adolescence.We operate specialized classrooms in public schools across Cambodia for students aged 5 to 16. Each child follows an individual learning plan, designed to develop essential motor, self-help, cognitive, and social skills. Our programs lay the foundation for lifelong learning and meaningful inclusion in society."
         },
         "section2": {
-          "title": "Two Learning Pathways (Ages 6-16)",
-          "desc": "Adapted curriculum designed to each student's level Access to support services like speech and occupational therapy Individual Education Plan (IEP) updated every 3 months"
+          "title": "Integrated Classrooms",
+          "subtitle": "Students with intellectual disabilities learn in non-mixed (specialized) classes within public schools.",
+          "desc1": "Follow an adapted curriculum designed to their level",
+          "desc2": "Access to support services such as speech and occupational therapy",
+          "desc3": "Receive an Individual Education Plan (IEP) updated every 3 months"
         },
         "section3": {
-          "title": "Individualized Education Plans",
-          "desc": "Students with and without disabilities learn together Teachers receive ongoing support from our team Follow national curriculum with adapted teaching methods Focus on peer interaction, mutual respect, and inclusion. Specialized classrooms and inclusive methods prepare students to learn and develop social, cognitive, and life skills."
+          "title": "Inclusive Classrooms",
+          "subtitle": "Students with and without disabilities learn side by side in the same classroom.",
+          "desc1": "Teachers receive ongoing training and support from our team",
+          "desc2": "Each child with a disability has a personalized IEP",
+          "desc3": "Follows the national curriculum and schedule with adapted teaching methods",
+          "desc4": "Focus on peer interaction, mutual respect, and building inclusive values"
         }
       },
       "vocational": {
         "title": "VOCATIONAL TRAINING & JOB PLACEMENT",
-        "desc": "Ages 16-25. Our vocational program follows special education classes, teaching life-long skills that prepare youth for independence and employment opportunities.",
+        "subtitle": "Building Life-Long Skills",
+        "desc": "Our vocational training program is the natural next step after our special education classes. We teach life-long skills that help youth over the age of 16 gain independence and prepare for future employment, opening doors to a world of opportunities.",
+        "ageRange": "Through hands-on activities and guided instruction, students develop essential skills such as:",
         "section1": {
-          "title": "Skills Students Learn",
-          "desc": "Cleaning and basic hygiene routines Preparing tables and washing dishes Gardening and outdoor maintenance Following instructions and teamwork Developing positive job attitudes and social behavior Expressing themselves through music, sports, and games Students currently produce handmade paper bags for Bodia, a Cambodian wellness products business. We also collaborate with external partners for job placements."
+          "title": "What Students Learn",
+          "desc1": "Cleaning and basic hygiene routines",
+          "desc2": "Preparing tables and washing dishes",
+          "desc3": "Gardening and outdoor maintenance",
+          "desc4": "Following instructions and working in teams",
+          "desc5": "Developing a positive job attitude and social behavior",
+          "desc6": "Expressing themselves through music, sports, and games"
         }
       },
       "teacher": {
         "title": "TEACHER TRAINING",
+        "subtitle": "Building Teacher Capacity for Inclusive Education",
+        "desc": "Since 2010, Rabbit School has been training teachers to provide inclusive, individualized education for children with intellectual disabilities and autism. With initial support from the University of London, our training focused on quality teaching, child-friendly methods, and practical tools for working with children with special needs.Our goal is to expand these specialized services across Cambodia—ensuring more educators are equipped to help all children thrive.",
         "section1": {
-          "title": "Building Teacher Capacity for Inclusive Education",
-          "desc": "Since 2010, Rabbit School has been training teachers to provide inclusive, individualized education for children with intellectual disabilities and autism. With initial support from the University of London, our training focused on quality teaching, child-friendly methods, and practical tools for working with children with special needs."
-        },
-        "section2": {
           "title": "What we Do:",
-          "desc": "Train teachers to assess students and develop Individual Education Plans (IEPs) tailored to each child's abilities and needs. Organize monthly teacher meetings to reflect on challenges, share solutions, and improve communication with students.Offer ongoing training in Phnom Penh and provinces, not only for teachers, but also for school directors, education authorities, commune committees, and civil society.Collaborate with NGO partners and local experts to providecontinuous learning opportunities for our staff Develop and distribute special education curricula and manualsfor use by teachers and parents."
+          "desc1": "Train teachers to assess students and develop Individual Education Plans (IEPs) tailored to each child’s abilities and needs.",
+          "desc2": "Organize monthly teacher meetings to reflect on challenges, share solutions, and improve communication with students.",
+          "desc3": "Offer ongoing training in Phnom Penh and provinces, not only for teachers, but also for school directors, education authorities, commune committees, and civil society.",
+          "desc4": "Collaborate with NGO partners and local experts to provide continuous learning opportunities for our staff.",
+          "desc5": "Develop and distribute special education curricula and manuals for use by teachers and parents."
         }
       },
       "making-paper-bags": {

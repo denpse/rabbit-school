@@ -5,6 +5,12 @@ import React, { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Play, ChevronRight } from "lucide-react";
+import {
+  useProgramData,
+  useProgramData1,
+  useTeacherTrainingData,
+  useVocationalData,
+} from "@/hooks/useProgramData";
 
 // Types
 interface NavigationButton {
@@ -186,6 +192,7 @@ const NavigationSection = ({
 const ProgramSection = ({
   id,
   title,
+  subtitle,
   content,
   imageSrc,
   imageAlt,
@@ -194,6 +201,7 @@ const ProgramSection = ({
 }: {
   id: string;
   title: string;
+  subtitle: string;
   content: React.ReactNode;
   imageSrc: string;
   imageAlt: string;
@@ -219,6 +227,7 @@ const ProgramSection = ({
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#623D3C] leading-tight">
             {title}
           </h2>
+          <h3 className="text-xl text-[#79A2C9] mb-1">{subtitle}</h3>
           <div className="prose prose-lg max-w-none text-gray-700">
             {content}
           </div>
@@ -477,6 +486,10 @@ const AdvocacyCards = ({
 
 // Main Component
 const HowWeWorkPage = () => {
+  const programData = useProgramData();
+  const programData1 = useProgramData1();
+  const vocationalData = useVocationalData();
+  const teacherTrainingData = useTeacherTrainingData();
   const t = useTranslations();
 
   // Memoized navigation buttons
@@ -539,13 +552,10 @@ const HowWeWorkPage = () => {
       {/* Education Programs */}
       <ProgramSection
         id="education-programs"
+        subtitle={t("weWorkPage.programs.education.subtitle")}
         title={t("weWorkPage.programs.education.title")}
         content={
           <div className="space-y-6">
-            <p className="leading-relaxed">
-              {t("weWorkPage.programs.education.desc")}
-            </p>
-
             <div className="space-y-4">
               <div>
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
@@ -560,18 +570,26 @@ const HowWeWorkPage = () => {
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                   {t("weWorkPage.programs.education.section2.title")}
                 </h4>
-                <p className="leading-relaxed">
-                  {t("weWorkPage.programs.education.section1.desc")}
-                </p>
+                <div className="leading-relaxed">
+                  {programData.map((item, index) => (
+                    <ul className="list-disc pl-3" key={index}>
+                      <li>{item.description}</li>
+                    </ul>
+                  ))}
+                </div>
               </div>
 
               <div>
                 <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                   {t("weWorkPage.programs.education.section3.title")}
                 </h4>
-                <p className="leading-relaxed">
-                  {t("weWorkPage.programs.education.section3.desc")}
-                </p>
+                <div className="leading-relaxed">
+                  {programData1.map((item, index) => (
+                    <ul className="list-disc pl-3" key={index}>
+                      <li>{item.description}</li>
+                    </ul>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -584,6 +602,7 @@ const HowWeWorkPage = () => {
       <ProgramSection
         id="vocational-training"
         title={t("weWorkPage.programs.vocational.title")}
+        subtitle={t("weWorkPage.programs.vocational.subtitle")}
         content={
           <div className="space-y-6">
             <p className="leading-relaxed">
@@ -593,9 +612,16 @@ const HowWeWorkPage = () => {
               <h4 className="text-xl font-bold text-[#623D3C] mb-2">
                 {t("weWorkPage.programs.vocational.section1.title")}
               </h4>
-              <p className="leading-relaxed">
-                {t("weWorkPage.programs.vocational.section1.desc")}
+              <p className="leading-relaxed font-bold">
+                {t("weWorkPage.programs.vocational.ageRange")}
               </p>
+              <div className="leading-relaxed">
+                {vocationalData.map((item, index) => (
+                  <ul className="list-disc pl-3" key={index}>
+                    <li>{item.description}</li>
+                  </ul>
+                ))}
+              </div>
             </div>
           </div>
         }
@@ -608,24 +634,24 @@ const HowWeWorkPage = () => {
       <ProgramSection
         id="teacher-training"
         title={t("weWorkPage.programs.teacher.title")}
+        subtitle={t("weWorkPage.programs.teacher.subtitle")}
         content={
           <div className="space-y-6">
             <div>
-              <h4 className="text-xl font-bold text-[#623D3C] mb-2">
-                {t("weWorkPage.programs.teacher.section1.title")}
-              </h4>
               <p className="leading-relaxed mb-4">
-                {t("weWorkPage.programs.teacher.section1.desc")}
+                {t("weWorkPage.programs.teacher.desc")}
               </p>
             </div>
 
             <div>
               <h4 className="text-xl font-bold text-[#623D3C] mb-2">
-                {t("weWorkPage.programs.teacher.section2.title")}
+                {t("weWorkPage.programs.teacher.section1.title")}
               </h4>
-              <p className="leading-relaxed mb-4">
-                {t("weWorkPage.programs.teacher.section2.desc")}
-              </p>
+              {teacherTrainingData.map((item, index) => (
+                <ul className="list-disc pl-3" key={index}>
+                  <li>{item.description}</li>
+                </ul>
+              ))}
             </div>
           </div>
         }
