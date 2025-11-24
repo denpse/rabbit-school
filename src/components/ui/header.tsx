@@ -207,7 +207,7 @@ export default function Header() {
             aria-label="Rabbit School - Home"
           >
             <Image
-              src="/logo.png"
+              src="/twologo.png"
               alt="Rabbit School Logo"
               width={220}
               height={45}
