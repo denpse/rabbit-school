@@ -22,6 +22,13 @@ import logos4 from "../../public/donors&partners/smart-logo.png";
 import logos5 from "../../public/donors&partners/ccf-logo.png";
 import logos6 from "../../public/donors&partners/epil-logo.jpg";
 import logos7 from "../../public/donors&partners/manulife-logo.png";
+import logos8 from "../../public/donors&partners/French Embassy.jpg";
+import logos9 from "../../public/donors&partners/Grab.jpg";
+import logos10 from "../../public/donors&partners/Kadoorie.png";
+import logos11 from "../../public/donors&partners/Mad Monkey.jpg";
+import logos12 from "../../public/donors&partners/Nokor Tep.jpg";
+import logos13 from "../../public/donors&partners/World Trust.webp";
+
 import { toKhmer } from "./utils/khmerNumbers";
 import { useImpactData } from "@/hooks/useImpactData";
 
@@ -56,6 +63,12 @@ const LOGO_IMAGES = [
   logos5,
   logos6,
   logos7,
+  logos8,
+  logos9,
+  logos10,
+  logos11,
+  logos12,
+  logos13,
 ] as const;
 const ANIMATION_DURATION = 20; // seconds for logo carousel
 
