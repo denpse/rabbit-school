@@ -58,7 +58,24 @@ const DonatePage = () => {
           <p className="text-gray-700">
             {t("donatePage.financial.description")}
           </p>
+          <br />
+          <div>
+            <ul className="list-disc list-inside text-gray-700">
+              <li>
+                <strong>{t("donatePage.financial.price1")} </strong>
+                {t("donatePage.financial.desc1")}
+              </li>
+              <li>
+                <strong>{t("donatePage.financial.price2")} </strong>
+                {t("donatePage.financial.desc2")}
+              </li>
+            </ul>
+          </div>
         </div>
+        <p className="font-semibold text-md">
+          {t("donatePage.financial.descbank")}
+        </p>
+        <br />
 
         {/* ABA QR Code Section */}
         <DonationCard />

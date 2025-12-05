@@ -20,24 +20,22 @@ const DonationCard = () => {
         <div className="flex-1 font-sans text-sm md:text-base space-y-[2px] leading-snug">
           <h2 className="font-bold text-lg mb-1">ACLEDA BANK</h2>
 
-          <p className="font-bold">
-            SWIFT Code: <span className="font-normal">ACLBKHPP</span>
+          <p>
+            <strong>SWIFT Code:</strong> ACLBKHPP
+          </p>
+          <p>
+            <strong>Bank address:</strong> Building N° 61, Preah
           </p>
 
-          <div className="flex gap-1">
-            <span className="font-bold whitespace-nowrap">Bank address:</span>
-            <span>Building N° 61, Preah</span>
-          </div>
           <p>Monivong Blvd., Sangkat Srah Chak,</p>
           <p>Khan Doun Penh, Phnom Penh</p>
 
           <div className="pt-2">
-            <p className="font-bold">
-              ACCOUNT NAME: <span className="font-normal">RABBIT SCHOOL</span>
+            <p>
+              <strong> ACCOUNT NAME:</strong> RABBIT SCHOOL
             </p>
-            <p className="font-bold">
-              ACCOUNT NUMBER:{" "}
-              <span className="font-normal">2900-01-005152-4-2</span>
+            <p>
+              <strong> ACCOUNT NUMBER:</strong> 2900-01-005152-4-2
             </p>
           </div>
         </div>

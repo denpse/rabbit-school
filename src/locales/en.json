@@ -231,7 +231,7 @@
       "description": "Your donation will help us continue to deliver critical support to the community and life transforming education opportunities for the most vulnerable. All donations are processed via our secure online payment portal. Simply complete the donation form below or contact your local office for support."
     },
     "resourceDonations": {
-      "title": "Resource Donations",
+      "title": "Give In-Kind",
       "intro": "If you would like to contribute with resources, these are things that are needed most:",
       "items": [
         "School materials such as books, pencils, DVDs (player) and educational games",
@@ -241,7 +241,12 @@
     },
     "financial": {
       "title": "Financial",
-      "description": "If you would like to make a financial contribution please deposit your donation to the following bank account:"
+      "description": "A single gift can change a child’s entire future.",
+      "price1": "$60",
+      "desc1": "opens the classroom door for one month.",
+      "price2": "$800",
+      "desc2": "keeps that door open for a full year—giving one child safety, routine, and a chance to grow.",
+      "descbank": "If you would like to make a financial contribution, please deposit your donation to the following bank account:"
     },
     "aba": {
       "title": "ABA",
