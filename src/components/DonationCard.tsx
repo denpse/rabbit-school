@@ -11,7 +11,7 @@ const DonationCard = () => {
 
   return (
     <div
-      className="flex flex-col w-fit"
+      className="flex flex-col md:w-fit w-none"
       style={{ backgroundColor: colors.bg, color: colors.text }}
     >
       {/* Main Card Content */}
