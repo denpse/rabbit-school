@@ -23,10 +23,23 @@ interface FormData {
   message: string;
 }
 
+// interface ContactInfo {
+//   icon: React.ComponentType<{ className?: string }>;
+//   labelKey: string;
+//   valueKey: string;
+//   href?: string;
+//   external?: boolean;
+// }
+interface PhoneInfo {
+  province: string;
+  phone: string;
+  href: string;
+}
+
 interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>;
   labelKey: string;
-  valueKey: string;
+  valueKey: string | PhoneInfo[];
   href?: string;
   external?: boolean;
 }
@@ -43,7 +56,7 @@ const CONTACT_INFO: ContactInfo[] = [
     icon: Mail,
     labelKey: "contactSection.section1.emailLabel",
     valueKey: "contactSection.section1.email",
-    href: "mailto:sor.sothearorn@rabbitschoolcambodia.net",
+    href: "mailto:sor.sothearorn@rabbitschoolcambodia.nett",
   },
   {
     icon: MapPin,
@@ -55,8 +68,28 @@ const CONTACT_INFO: ContactInfo[] = [
   {
     icon: Phone,
     labelKey: "contactSection.section1.telephoneLabel",
-    valueKey: "contactSection.section1.telephone",
-    href: "tel:+85568901971",
+    valueKey: [
+      {
+        province: "contactSection.section1.province1",
+        phone: "contactSection.section1.telephone1",
+        href: "tel:+85517525815",
+      },
+      {
+        province: "contactSection.section1.province2",
+        phone: "contactSection.section1.telephone2",
+        href: "tel:+85593329698",
+      },
+      {
+        province: "contactSection.section1.province3",
+        phone: "contactSection.section1.telephone3",
+        href: "tel:+85512603877",
+      },
+      {
+        province: "contactSection.section1.province4",
+        phone: "contactSection.section1.telephone4",
+        href: "tel:+85581496178",
+      },
+    ],
   },
 ] as const;
 
@@ -116,8 +149,39 @@ const ContactInfoItem: React.FC<{
         <dt className="text-sm font-medium text-[#623D3C]/80 mb-1">
           {t(info.labelKey)}
         </dt>
-        <dd className="text-base">
+        {/* <dd className="text-base">
           {info.href ? (
+            <a
+              href={info.href}
+              className="text-[#623D3C] hover:text-[#623D3C]/80 transition-colors duration-200 focus:outline-none focus:underline"
+              {...(info.external && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+            >
+              {t(info.valueKey)}
+            </a>
+          ) : (
+            <span className="text-[#623D3C]">{t(info.valueKey)}</span>
+          )}
+        </dd> */}
+        <dd className="text-base">
+          {Array.isArray(info.valueKey) ? (
+            // CASE 1: valueKey is array → render multiple phones
+            <div className="space-y-1">
+              {info.valueKey.map((item, index) => (
+                <div key={index} className="text-[#623D3C]">
+                  {item.province && (
+                    <span className="font-medium">{t(item.province)}: </span>
+                  )}
+                  <a href={`tel:${t(item.phone)}`} className="hover:underline">
+                    {t(item.phone)}
+                  </a>
+                </div>
+              ))}
+            </div>
+          ) : // CASE 2: valueKey is string
+          info.href ? (
             <a
               href={info.href}
               className="text-[#623D3C] hover:text-[#623D3C]/80 transition-colors duration-200 focus:outline-none focus:underline"

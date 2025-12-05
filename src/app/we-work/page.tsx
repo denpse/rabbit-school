@@ -450,7 +450,7 @@ const AdvocacyCards = ({
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-3 gap-8"
           variants={staggerContainer}
         >
           {cards.map((card, index) => (
@@ -522,7 +522,7 @@ const HowWeWorkPage = () => {
   const advocacyCards = useMemo(
     () => [
       {
-        src: "/images/sai.jpg",
+        src: "/images/Run With Sai.jpg",
         alt: "Community event - Run with Sai",
         caption: t("weWorkPage.sai-event.caption1"),
       },
@@ -530,6 +530,11 @@ const HowWeWorkPage = () => {
         src: "/images/New Picture 13.jpg",
         alt: "Parent training and support sessions",
         caption: t("weWorkPage.sai-event.caption2"),
+      },
+      {
+        src: "/images/National Forum.jpg",
+        alt: "Participation in Employment National Forum",
+        caption: t("weWorkPage.sai-event.caption3"),
       },
     ],
     [t]

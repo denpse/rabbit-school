@@ -29,6 +29,26 @@ import logos11 from "../../public/donors&partners/Mad Monkey.jpg";
 import logos12 from "../../public/donors&partners/Nokor Tep.jpg";
 import logos13 from "../../public/donors&partners/World Trust.webp";
 
+import donor1 from "../../public/Donors-Logos/1.png";
+import donor2 from "../../public/Donors-Logos/5.jpg";
+import donor3 from "../../public/Donors-Logos/6.png";
+import donor4 from "../../public/Donors-Logos/7.jpg";
+import donor5 from "../../public/Donors-Logos/8.webp";
+import donor6 from "../../public/Donors-Logos/9.gif";
+import donor7 from "../../public/Donors-Logos/10.png";
+import donor8 from "../../public/Donors-Logos/11.jpg";
+import donor9 from "../../public/Donors-Logos/12.jpg";
+import donor10 from "../../public/Donors-Logos/12.png";
+import donor11 from "../../public/Donors-Logos/13.webp";
+import donor12 from "../../public/Donors-Logos/Logo-JTRUST.webp";
+import donor13 from "../../public/Donors-Logos/OIP.webp";
+
+import partner1 from "../../public/Partners-logos/65320837a02877d79beb286d_OCIC_20-_202023_20Branding_20-_20Website-p-2600.png";
+import partner2 from "../../public/Partners-logos/Grab.jpg";
+import partner3 from "../../public/Partners-logos/OIP.webp";
+import partner4 from "../../public/Partners-logos/photo_2025-03-31_11-29-50.jpg";
+import partner5 from "../../public/Partners-logos/Smart.png";
+
 import { toKhmer } from "./utils/khmerNumbers";
 import { useImpactData } from "@/hooks/useImpactData";
 
@@ -55,20 +75,22 @@ interface SectionProps {
 
 // Constants
 // const ICONS = [GraduationCap, MapPin, Backpack, Rainbow] as const;
-const LOGO_IMAGES = [
-  logos,
-  logos2,
-  logos3,
-  logos4,
-  logos5,
-  logos6,
-  logos7,
-  logos8,
-  logos9,
-  logos10,
-  logos11,
-  logos12,
-  logos13,
+const LOGO_IMAGES = [partner1, partner2, partner3, partner4, partner5] as const;
+
+const DONOR_LOGOS = [
+  donor1,
+  donor2,
+  donor3,
+  donor4,
+  donor5,
+  donor6,
+  donor7,
+  donor8,
+  donor9,
+  donor10,
+  donor11,
+  donor12,
+  donor13,
 ] as const;
 const ANIMATION_DURATION = 20; // seconds for logo carousel
 
@@ -272,6 +294,7 @@ export default function Home() {
   const impactData = useImpactData();
 
   const doubledLogos = useMemo(() => [...LOGO_IMAGES, ...LOGO_IMAGES], []);
+  const doubledDonorLogos = useMemo(() => [...DONOR_LOGOS, ...DONOR_LOGOS], []);
 
   return (
     <main>
@@ -402,6 +425,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Donor Section */}
+      <section className="bg-[#F7F5F4] py-16" aria-labelledby="partners-title">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <motion.h2
+              id="partners-title"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#623D3C] mb-4"
+              variants={fadeInVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              {t("donors.title")}
+            </motion.h2>
+
+            <motion.p
+              className="text-[#623D3C]/80 text-lg md:text-xl max-w-4xl mx-auto"
+              variants={fadeInVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              {t("partners.description")}
+            </motion.p>
+          </div>
+
+          {/* Logo Carousel */}
+          <div
+            className="overflow-hidden relative"
+            role="region"
+            aria-label="Partner logos"
+          >
+            <motion.div
+              className="flex gap-12 items-center"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: ANIMATION_DURATION,
+                ease: "linear",
+              }}
+              style={{ width: `${doubledDonorLogos.length * 180}px` }}
+            >
+              {doubledDonorLogos.map((logo, index) => (
+                <div
+                  key={`logo-${index}`}
+                  className="flex-shrink-0 w-40 h-20 relative grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                  <Image
+                    src={logo}
+                    alt={`Partner ${(index % DONOR_LOGOS.length) + 1} logo`}
+                    fill
+                    className="object-contain"
+                    sizes="160px"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Partners Section */}
       <section className="bg-[#F7F5F4] py-16" aria-labelledby="partners-title">
         <div className="max-w-7xl mx-auto px-6">
@@ -416,17 +501,6 @@ export default function Home() {
             >
               {t("partners.title")}
             </motion.h2>
-
-            <motion.p
-              className="text-[#623D3C]/80 text-lg md:text-xl max-w-4xl mx-auto"
-              variants={fadeInVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              {t("partners.description")}
-            </motion.p>
           </div>
 
           {/* Logo Carousel */}
@@ -463,50 +537,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Donation Section */}
-      {/* <section className="bg-[#FFD45F] py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              className="text-center lg:text-left space-y-6"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#623D3C] leading-tight">
-                {t("donation.title")}
-              </h2>
-
-              <p className="text-[#623D3C]/80 text-base md:text-lg lg:text-xl leading-relaxed max-w-xl lg:max-w-none">
-                {t("donation.description")}
-              </p>
-
-              <div className="display: inline-block">
-                <DonationLink variant="primary" text={t("donation.button")} />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="flex justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <Image
-                src={donate}
-                alt="Donation support illustration"
-                width={500}
-                height={400}
-                className="w-full max-w-md lg:max-w-lg h-auto object-contain"
-                sizes="(max-width: 1024px) 100vw, 500px"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Get Involved Section */}
       <ContentSection

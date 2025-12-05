@@ -51,8 +51,12 @@
     }
   },
   "partners": {
-    "title": "OUR PARTNERS AND DONORS",
+    "title": "OUR PARTNERS",
     "description": "Working together with our corporate partners, we make a far bigger impact than we could by acting alone. Together we can make real change happen at scale."
+  },
+  "donors": {
+    "title": "OUR DONORS",
+    "description": "Our work is stronger because we don’t do it alone. Side by side with our donors and partners, we open more classrooms, train more teachers, and reach more children while helping Cambodia move toward true inclusion."
   },
   "donation": {
     "title": "WHERE YOUR MONEY GOES",
@@ -179,11 +183,18 @@
       "title": "GET IN TOUCH",
       "description": "Have any questions? We'd love to hear from you!",
       "emailLabel": "E-mail",
-      "email": "sor.sothearorn@rabbitschoolcambodia.net",
+      "email": "info@rabbitschoolcambodia.net",
       "addressLabel": "Address",
       "address": "Toul Kork Primary School, Phnom Penh",
       "telephoneLabel": "Telephone",
-      "telephone": "+855 68 901 971 / 885 17 525 815",
+      "province1": "Head Office",
+      "province2": "Siem Reap Area Supervisor",
+      "province3": "Kampong Speu Area Supervisor",
+      "province4": "Kandal Area Supervisor",
+      "telephone1": "(+855) 68 901 971 /17 525 815",
+      "telephone2": "+855 93 329 698",
+      "telephone3": "+855 12 603 877",
+      "telephone4": "+855 081 49 61 78",
       "instruction": "Please use the contact information above, or fill the form below:"
     },
     "section2": {
@@ -317,7 +328,8 @@
       "title": "ADVOCACY AND COMMUNITY BUILDING",
       "desc": "We work closely with local authorities and parents to integrate Rabbit School’s programs into the public system. At the same time, we work to break down the stigma around intellectual disabilities - promoting understanding, inclusion, and lasting change within communities. This way we are not just teaching children—we are building a more inclusive society, one where everyone is valued for who they are and the contributions they can make.",
       "caption1": "Event Run With Sai",
-      "caption2": "Parents' Training"
+      "caption2": "Parents' Training",
+      "caption3": "Participation in Employment National Forum"
     },
     "school-activities": {
       "title": "ACTIVITIES IN SCHOOL"
