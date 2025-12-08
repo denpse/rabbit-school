@@ -30,7 +30,7 @@ import logos12 from "../../public/donors&partners/Nokor Tep.jpg";
 import logos13 from "../../public/donors&partners/World Trust.webp";
 
 import donor1 from "../../public/Donors-Logos/1.png";
-import donor2 from "../../public/Donors-Logos/5.jpg";
+import donor2 from "../../public/Donors-Logos/moey-logo.png";
 import donor3 from "../../public/Donors-Logos/6.png";
 import donor4 from "../../public/Donors-Logos/7.jpg";
 import donor5 from "../../public/Donors-Logos/8.webp";
@@ -196,7 +196,7 @@ const HeroSection = ({
   </section>
 );
 
-const ContentSection = ({
+const ContentSection1 = ({
   title,
   description,
   buttonText,
@@ -207,6 +207,98 @@ const ContentSection = ({
   imageOnLeft = false,
 }: SectionProps) => (
   <section className={` py-16`}>
+    <div className="max-w-7xl mx-auto px-6">
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+          imageOnLeft ? "lg:grid-flow-col-dense" : ""
+        }`}
+      >
+        {/* Text Content */}
+        <motion.div
+          className={`space-y-6 ${imageOnLeft ? "lg:col-start-2" : ""}`}
+          initial={{ opacity: 0, x: imageOnLeft ? 80 : -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.h2
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#623D3C] leading-tight"
+            initial={{ y: -30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            {title}
+          </motion.h2>
+
+          <motion.p
+            className="text-gray-700 text-base md:text-lg lg:text-xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {description}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href={buttonHref}
+              className="inline-flex items-center gap-2 bg-[#623D3C] hover:bg-[#623D3C]/90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#623D3C] focus:ring-offset-2 shadow-md hover:shadow-lg"
+            >
+              <span>{buttonText}</span>
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Image */}
+        <motion.div
+          className={`flex justify-center ${
+            imageOnLeft ? "lg:col-start-1 lg:row-start-1" : ""
+          }`}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            className="relative overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={600}
+              height={400}
+              className="object-cover w-full h-64 sm:h-72 md:h-80 lg:h-96"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+              quality={85}
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  </section>
+);
+
+const ContentSection = ({
+  title,
+  description,
+  buttonText,
+  buttonHref,
+  imageSrc,
+  imageAlt,
+  // backgroundColor = "bg-[#8BAEA7]",
+  imageOnLeft = false,
+}: SectionProps) => (
+  <section className={` py-16 bg-[#8BAEA7]`}>
     <div className="max-w-7xl mx-auto px-6">
       <div
         className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
@@ -317,7 +409,7 @@ export default function Home() {
       />
 
       {/* How We Work Section */}
-      <ContentSection
+      <ContentSection1
         title={t("howWeWork.title")}
         description={t("howWeWork.description")}
         buttonText={t("howWeWork.button")}
@@ -468,21 +560,61 @@ export default function Home() {
               }}
               style={{ width: `${doubledDonorLogos.length * 180}px` }}
             >
-              {doubledDonorLogos.map((logo, index) => (
-                <div
-                  key={`logo-${index}`}
-                  className="flex-shrink-0 w-40 h-20 relative grayscale hover:grayscale-0 transition-all duration-300"
-                >
-                  <Image
-                    src={logo}
-                    alt={`Partner ${(index % DONOR_LOGOS.length) + 1} logo`}
-                    fill
-                    className="object-contain"
-                    sizes="160px"
-                  />
-                </div>
-              ))}
+              {doubledDonorLogos.map((logo, index) => {
+                // Check for the first item (0) AND the first duplicate item (13)
+                const isScaledItem =
+                  index === 0 || index === DONOR_LOGOS.length;
+
+                return (
+                  <div
+                    key={`logo-${index}`}
+                    className={`
+        relative flex-shrink-0 transition-all duration-300
+        ${
+          isScaledItem
+            ? "w-80 h-40 z-10 origin-left grayscale hover:grayscale-0"
+            : "w-40 h-20 grayscale hover:grayscale-0"
+        }
+      `}
+                  >
+                    <Image
+                      src={logo}
+                      alt={`Partner ${(index % DONOR_LOGOS.length) + 1} logo`}
+                      fill
+                      className="object-contain"
+                      sizes={isScaledItem ? "320px" : "160px"}
+                    />
+                  </div>
+                );
+              })}
             </motion.div>
+            {/* <motion.div
+              className="flex gap-12 items-center"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: ANIMATION_DURATION,
+                ease: "linear",
+              }}
+              style={{ width: `${doubledDonorLogos.length * 180}px` }}
+            >
+              {doubledDonorLogos.map((logo, index) => {
+                return (
+                  <div
+                    key={`logo-${index}`}
+                    className="flex-shrink-0 w-40 h-20 relative grayscale hover:grayscale-0 transition-all duration-300"
+                  >
+                    <Image
+                      src={logo}
+                      alt={`Partner ${(index % DONOR_LOGOS.length) + 1} logo`}
+                      fill
+                      className="object-contain"
+                      sizes="160px"
+                    />
+                  </div>
+                );
+              })}
+            </motion.div> */}
           </div>
         </div>
       </section>
